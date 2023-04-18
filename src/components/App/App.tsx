@@ -1,16 +1,16 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
-import TestComponent from '../TestComponent';
-import ClassComponent from '../ClassComponents';
+import TestComponent from "../TestComponent";
+import ClassComponent from "../ClassComponents";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <TestComponent />
+        <TestComponent name="Daniel" />
         <ClassComponent name="Mundo" />
         <a
           className="App-link"
