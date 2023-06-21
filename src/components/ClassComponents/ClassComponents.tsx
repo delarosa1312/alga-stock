@@ -11,27 +11,21 @@ class ClassComponent extends React.Component<{ name: string }> {
   };
 
   componentDidMount() {
-    console.log("componentDidMount reached");
+    console.log("Did mount reached");
   }
 
   componentDidUpdate() {
-    console.log("componentDidUpdate reached");
+    console.log("Did update reached");
   }
 
   render() {
     console.log("render reached");
-    return (
-      <div>
-        <p>Name: {this.state.name}</p>
-        <button
-          onClick={() => {
-            this.setState({ name: "Daniel" });
-          }}
-        >
-          Click me
-        </button>
-      </div>
-    );
+    return <div>
+      <p>Name: { this.state.name }</p>
+      <button onClick={() => {
+          this.setState({ name: "Daniel" });
+      }}>Click me</button>
+    </div>
   }
 }
 
