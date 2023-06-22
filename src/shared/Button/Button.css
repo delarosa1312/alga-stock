@@ -6,3 +6,8 @@ button.AppButton {
   border: none; 
   padding: 7px 10px;
 }
+
+button.AppButton:hover {
+  background-color: rgb(46, 172, 255);
+  transition: 250ms;
+}
