@@ -7,9 +7,10 @@ header.AppHeader {
   justify-content: center;
   align-items: center;
 
+  margin: 5px;
   padding: 10px;
-  box-shadow: 0 3px 6px rgba(0,0,0,.2);
-  border-radius: 0px 0px 5px 5px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
 }
 
 header.AppHeader h1 {

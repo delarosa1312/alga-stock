@@ -1,0 +1,60 @@
+table.AppTable {
+  width: 100%;
+  box-shadow: 0 3px 6px rgba(#000, 0.1);
+  border-collapse: collapse;
+  border-radius: 15px 15px 15px 15px;
+
+  thead {
+    background-color: #09f;
+
+    tr {
+      th {
+        color: rgba(#fff, 0.8);
+        text-align: left;
+        padding: 7px 10px;
+        font-size: 0.8em;
+        font-weight: 400;
+        text-transform: uppercase;
+        letter-spacing: 0.75px;
+
+        &.left {
+          border-radius: 15px 0px 0px 0px;
+        }
+
+        &.right {
+          text-align: right;
+          border-radius: 0px 15px 0px 0px;
+        }
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      &:hover {
+        background-color: rgba(#000, 0.05);
+      }
+
+      &:last-child:hover important {
+      }
+
+      td {
+        padding: 7px 10px;
+        color: #222;
+
+        &.right {
+          text-align: right;
+        }
+
+        &.last-right {
+          text-align: right;
+          border-radius: 0px 0px 15px 0px;
+        }
+
+        &.last-left {
+          border-radius: 0px 0px 0px 15px;
+        }
+      }
+    }
+  }
+}
