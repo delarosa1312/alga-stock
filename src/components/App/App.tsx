@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <Header title="AlgaStock" />
       <Container>
-        <Table/>
+        <Table />
       </Container>
     </div>
   );
