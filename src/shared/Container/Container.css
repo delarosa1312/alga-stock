@@ -1,4 +1,10 @@
 div.AppContainer {
-  margin: 10px auto;
-  max-width: 480px;
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%);
+  width: 100%;
+
+  max-width: 900px;
+  margin: 5px;
+  padding: 10px;
 }
