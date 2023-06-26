@@ -43,7 +43,7 @@ const ProductForm: React.FC<ProductFormProps> = (props) => {
   };
 
   return (
-    <Form onSubmit={handleFormSubmit}>
+    <Form title="Product Form" onSubmit={handleFormSubmit}>
       <Input
         onChange={handleInputChange}
         value={form.name}

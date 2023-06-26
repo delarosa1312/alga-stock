@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Form.scss";
 
 declare interface FormProps {
@@ -8,16 +8,27 @@ declare interface FormProps {
 }
 
 const Form: React.FC<FormProps> = (props) => {
+  const [isCollapsed, setIsCollapsed] = useState(true);
+
+  const toggleCollapse = () => {
+    setIsCollapsed(!isCollapsed);
+  };
+
   const preventedSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     props.onSubmit && props.onSubmit(event);
   };
 
   return (
-    <form className="AppForm" onSubmit={preventedSubmit}>
+    <div
+      className={`AppDivCollapse ${isCollapsed ? "" : "collapsed"}`}
+      onClick={toggleCollapse}
+    >
       {props.title && <div className="Title">{props.title}</div>}
-      {props.children}
-    </form>
+      <form className="AppForm" onSubmit={preventedSubmit}>
+        {props.children}
+      </form>
+    </div>
   );
 };
 
