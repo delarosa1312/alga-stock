@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./App.css";
 import Header from "../Header";
-import Container from "../../shared/Container";
-import Table, { TableHeader } from "../../shared/Table";
-import Products, { Product } from "../../shared/Table/Table.mockdata";
+import Container from "../shared/Container";
+import Table, { TableHeader } from "../shared/Table";
+import Products, { Product } from "../shared/Table/Table.mockdata";
 import ProductForm, { ProductCreator } from "../Products/ProductForm";
 import Swal from "sweetalert2";
 
@@ -56,6 +56,7 @@ function App() {
   const handleProductEdit = (product: Product) => {
     setUpdatingProduct(product);
   };
+
   const handleProductDetail = (product: Product) => {
     Swal.fire(
       "Product Details",
@@ -67,6 +68,7 @@ function App() {
   const deleteProduct = (id: number) => {
     setProducts(products.filter((product) => product.id !== id));
   };
+
   const handleProductDelete = (product: Product) => {
     Swal.fire({
       title: `You want to delete the ${product.name}?`,

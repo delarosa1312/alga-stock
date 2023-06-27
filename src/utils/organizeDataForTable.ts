@@ -1,4 +1,4 @@
-import { TableHeader } from "../shared/Table";
+import { TableHeader } from "../components/shared/Table";
 
 type IndexedHeaders = {
   [key: string]: TableHeader;

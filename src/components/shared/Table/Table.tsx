@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import "./Table.scss";
-import organizeData from "../../utils/organizeDataForTable";
+import organizeData from "../../../utils/organizeDataForTable";
 import {
   handleDragEnd,
   handleDragOver,
   handleDragStart,
   handleDrop,
-} from "../../utils/draggableCollumnForTable";
+} from "../../../utils/draggableCollumnForTable";
 import Button from "../Button/Button";
 
 export interface TableHeader {
