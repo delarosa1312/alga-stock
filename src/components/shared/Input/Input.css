@@ -10,17 +10,18 @@
 .AppInput label span {
   text-transform: uppercase;
   color: #09f;
-  font-size: .8em;
+  font-size: 0.8em;
   height: 15px;
-  letter-spacing: .75px;
+  letter-spacing: 0.75px;
 }
 
 .AppInput label input {
+  background-color: #141824;
   border: none;
   border-bottom: 1px solid #ccc;
   border-radius: 0; /* fix edge's default border-radius */
   height: 30px;
-  color: #222;
+  color: #949db5;
   transition: 250ms;
 }
 

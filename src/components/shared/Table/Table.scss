@@ -1,4 +1,5 @@
 table.AppTable {
+  background-color: #141824;
   width: 100%;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   border-collapse: collapse;
@@ -6,15 +7,15 @@ table.AppTable {
   overflow: hidden;
 
   thead {
-    background-color: #09f;
+    background-color: #141824;
 
     tr {
       th {
-        color: rgba(255, 255, 255, 0.8);
+        color: #949db5;
         text-align: left;
         padding: 7px 10px;
         font-size: 0.8em;
-        font-weight: 400;
+        font-weight: 800;
         text-transform: uppercase;
         letter-spacing: 0.75px;
         transition: background-color 0.3s ease;
@@ -38,7 +39,9 @@ table.AppTable {
 
       td {
         padding: 7px 10px;
-        color: #222;
+        color: rgb(227, 230, 237);
+        font-weight: 700;
+        font-size: 0.8rem;
 
         &.right {
           text-align: right;
