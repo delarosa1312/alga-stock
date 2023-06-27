@@ -109,7 +109,7 @@ const ProductForm: React.FC<ProductFormProps> = (props) => {
         placeholder="E.g.: 15"
         required
       />
-      <Button>Submit</Button>
+      <Button>{form.id ? "Update" : "Submit"}</Button>
     </Form>
   );
 };

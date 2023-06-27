@@ -5,6 +5,7 @@ import Container from "../../shared/Container";
 import Table, { TableHeader } from "../../shared/Table";
 import Products, { Product } from "../../shared/Table/Table.mockdata";
 import ProductForm, { ProductCreator } from "../Products/ProductForm";
+import Swal from "sweetalert2";
 
 const headers: TableHeader[] = [
   {
@@ -30,7 +31,7 @@ const headers: TableHeader[] = [
 function App() {
   const [products, setProducts] = useState(Products);
   const [updatingProduct, setUpdatingProduct] = useState<Product | undefined>(
-    products[0]
+    undefined
   );
 
   const handleProductSubmit = (product: ProductCreator) => {
@@ -52,6 +53,37 @@ function App() {
     setUpdatingProduct(undefined);
   };
 
+  const handleProductEdit = (product: Product) => {
+    setUpdatingProduct(product);
+  };
+  const handleProductDetail = (product: Product) => {
+    Swal.fire(
+      "Product Details",
+      `The Product ${product.name} costs $${product.price}.</br> We have ${product.stock} units available in stock.`,
+      "info"
+    );
+  };
+
+  const deleteProduct = (id: number) => {
+    setProducts(products.filter((product) => product.id !== id));
+  };
+  const handleProductDelete = (product: Product) => {
+    Swal.fire({
+      title: `You want to delete the ${product.name}?`,
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#09f",
+      cancelButtonColor: "#d33",
+      confirmButtonText: `Yes, delete ${product.name}`,
+    }).then((result) => {
+      if (result.value) {
+        deleteProduct(product.id);
+        Swal.fire("Deleted!", "Your Product has been deleted.", "success");
+      }
+    });
+  };
+
   return (
     <div className="App">
       <Header title="AlgaStock" />
@@ -65,9 +97,9 @@ function App() {
           headers={headers}
           data={products}
           enableActions
-          onDelete={console.log}
-          onDetail={console.log}
-          onEdit={console.log}
+          onDelete={handleProductDelete}
+          onDetail={handleProductDetail}
+          onEdit={handleProductEdit}
         />
       </Container>
     </div>
