@@ -7,6 +7,8 @@ import {
   handleDragStart,
   handleDrop,
 } from "../../utils/draggableCollumnForTable";
+import Button from "../Button/Button";
+
 export interface TableHeader {
   key: string;
   value: string;
@@ -53,6 +55,7 @@ const Table: React.FC<TableProps> = (props) => {
               {header.value}
             </th>
           ))}
+          {props.enableActions && <th className="right">Actions</th>}
         </tr>
       </thead>
       <tbody>
@@ -68,6 +71,29 @@ const Table: React.FC<TableProps> = (props) => {
                     {row[item]}
                   </td>
                 ) : null
+              )}
+              {props.enableActions && (
+                <td className="actions right">
+                  {props.onEdit && (
+                    <Button onClick={() => props.onEdit && props.onEdit(row)}>
+                      Edit
+                    </Button>
+                  )}
+                  {props.onDetail && (
+                    <Button
+                      onClick={() => props.onDetail && props.onDetail(row)}
+                    >
+                      Detail
+                    </Button>
+                  )}
+                  {props.onDelete && (
+                    <Button
+                      onClick={() => props.onDelete && props.onDelete(row)}
+                    >
+                      Delete
+                    </Button>
+                  )}
+                </td>
               )}
             </tr>
           );
