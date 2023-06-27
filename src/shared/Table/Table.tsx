@@ -1,13 +1,19 @@
 import React, { useState } from "react";
 import "./Table.scss";
 import organizeData from "../../utils/organizeDataForTable";
+import {
+  handleDragEnd,
+  handleDragOver,
+  handleDragStart,
+  handleDrop,
+} from "../../utils/draggableCollumnForTable";
 export interface TableHeader {
   key: string;
   value: string;
   right?: boolean;
 }
 
-declare interface TableProps {
+export declare interface TableProps {
   headers: TableHeader[];
   data: any[];
 
@@ -23,41 +29,6 @@ const Table: React.FC<TableProps> = (props) => {
   const [organizedData, indexedHeaders] = organizeData(props.data, headers);
   const [draggingIndex, setDraggingIndex] = useState<number | null>(null);
 
-  const handleDragStart = (
-    event: React.DragEvent<HTMLTableCellElement>,
-    index: number
-  ) => {
-    const dummyElement = document.createElement("div");
-    event.dataTransfer.setData("text/plain", index.toString());
-    event.dataTransfer.setDragImage(dummyElement, 0, 0);
-
-    setDraggingIndex(index);
-  };
-
-  const handleDragOver = (
-    event: React.DragEvent<HTMLTableCellElement>,
-    index: number
-  ) => {
-    event.preventDefault();
-  };
-
-  const handleDragEnd = () => {
-    setDraggingIndex(null);
-  };
-
-  const handleDrop = (
-    event: React.DragEvent<HTMLTableCellElement>,
-    index: number
-  ) => {
-    event.preventDefault();
-    const dragIndex = event.dataTransfer.getData("text/plain");
-    const newHeaders = [...headers];
-    const [draggedHeader] = newHeaders.splice(Number(dragIndex), 1);
-    newHeaders.splice(index, 0, draggedHeader);
-    setHeaders(newHeaders);
-    setDraggingIndex(null);
-  };
-
   return (
     <table className="AppTable">
       <thead>
@@ -66,10 +37,15 @@ const Table: React.FC<TableProps> = (props) => {
             <th
               key={header.key}
               draggable
-              onDragStart={(event) => handleDragStart(event, index)}
+              onDragStart={(event) =>
+                setDraggingIndex(handleDragStart(event, index))
+              }
               onDragOver={(event) => handleDragOver(event, index)}
-              onDragEnd={handleDragEnd}
-              onDrop={(event) => handleDrop(event, index)}
+              onDragEnd={(event) => setDraggingIndex(handleDragEnd)}
+              onDrop={(event) => {
+                setHeaders(handleDrop(headers, event, index));
+                setDraggingIndex(handleDragEnd);
+              }}
               className={`${header.right ? "right" : ""} ${
                 index === draggingIndex ? "dragging" : ""
               }`}
