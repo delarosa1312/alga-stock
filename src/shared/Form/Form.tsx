@@ -20,11 +20,12 @@ const Form: React.FC<FormProps> = (props) => {
   };
 
   return (
-    <div
-      className={`AppDivCollapse ${isCollapsed ? "" : "collapsed"}`}
-      onClick={toggleCollapse}
-    >
-      {props.title && <div className="Title">{props.title}</div>}
+    <div className={`AppDivCollapse ${isCollapsed ? "" : "collapsed"}`}>
+      {props.title && (
+        <div className="Title" onClick={toggleCollapse}>
+          {props.title}
+        </div>
+      )}
       <form className="AppForm" onSubmit={preventedSubmit}>
         {props.children}
       </form>
